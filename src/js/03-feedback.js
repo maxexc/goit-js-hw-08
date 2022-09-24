@@ -1,12 +1,19 @@
 import throttle from 'lodash.throttle';
 
 const form = document.querySelector('.feedback-form');
+const backBtn = document.querySelector('.backBtn');
 const LOCAL_KEY = 'feedback-form-state';
 const dataForm = {};
 
 form.addEventListener('submit', onSubmitBtn);
 form.addEventListener('input', throttle(onTextInput, 1000));
+backBtn.addEventListener('click', clearData);
 dataStore();
+
+function clearData(evt) {
+    localStorage.clear(evt);
+    backBtn.removeEventListener(evt);
+}
 
 function onSubmitBtn(event) {
   event.preventDefault();
