@@ -1,6 +1,6 @@
 import throttle from 'lodash.throttle';
 
-const form = document.querySelector('.feedback-form');
+const form = document.querySelector('.js-feedback-form');
 const backBtn = document.querySelector('.backBtn');
 const LOCAL_KEY = 'feedback-form-state';
 const dataForm = {};
@@ -11,13 +11,14 @@ backBtn.addEventListener('click', clearData);
 dataStore();
 
 function clearData(evt) {
-    localStorage.clear(evt);
-    backBtn.removeEventListener(evt);
+  localStorage.removeItem(LOCAL_KEY); // delete localKey
+  // backBtn.removeEventListener(evt); !!!! DELETE ALL DATA!!!! WARNING!!
 }
 
 function onSubmitBtn(event) {
   event.preventDefault();
-  console.log(`Email: ${form.email.value} message: ${form.message.value}`);
+  console.log(JSON.parse(localStorage.getItem(LOCAL_KEY)));
+  // console.log(`Email: ${form.email.value} message: ${form.message.value}`);
   event.currentTarget.reset();
   localStorage.removeItem(LOCAL_KEY);
 }
