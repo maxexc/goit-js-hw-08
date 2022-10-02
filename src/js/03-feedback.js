@@ -12,7 +12,8 @@ dataStore();
 
 function clearData(evt) {
   localStorage.removeItem(LOCAL_KEY); // delete localKey
-  // backBtn.removeEventListener(evt); !!!! DELETE ALL DATA!!!! WARNING!!
+  // localStorage.clear();             !!!!DELETE ALL DATA!!!! WARNING!!
+  // backBtn.removeEventListener(evt);
 }
 
 function onSubmitBtn(event) {
